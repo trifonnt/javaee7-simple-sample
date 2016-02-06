@@ -6,9 +6,10 @@
     <version>1.11-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>javaee7-simple-sample</name>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+		<properties>
+			<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+			<version.wildfly-swarm>1.0.0.Alpha9</version.wildfly-swarm>
+		</properties>
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
@@ -16,6 +17,16 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+				<dependency>
+						<groupId>org.wildfly.swarm</groupId>
+						<artifactId>wildfly-swarm-jaxrs-weld</artifactId>
+						<version>${version.wildfly-swarm}</version>
+				</dependency>
+				<dependency>
+						<groupId>org.wildfly.swarm</groupId>
+						<artifactId>wildfly-swarm-jaxrs-jaxb</artifactId>
+						<version>${version.wildfly-swarm}</version>
+				</dependency>
     </dependencies>
     <scm>
         <connection>scm:git:https://github.com/javaee-samples/javaee7-simple-sample.git</connection>
@@ -87,8 +98,26 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        <plugins>
-            <plugin>
+				<plugins>
+					<plugin>
+						<groupId>org.wildfly.swarm</groupId>
+						<artifactId>wildfly-swarm-plugin</artifactId>
+						<version>${version.wildfly-swarm}</version>
+						<configuration>
+							<jvmArguments>
+								<jvmArgument>-Xmx128m</jvmArgument>
+							</jvmArguments>
+						</configuration>
+						<executions>
+							<execution>
+								<id>package</id>
+								<goals>
+									<goal>package</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>1.0.2.Final</version>
