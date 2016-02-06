@@ -8,7 +8,7 @@
     <name>javaee7-simple-sample</name>
 		<properties>
 			<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-			<version.wildfly-swarm>1.0.0.Alpha9</version.wildfly-swarm>
+			<version.wildfly-swarm>1.0.0.Alpha8</version.wildfly-swarm>
 		</properties>
     <dependencies>
         <dependency>
